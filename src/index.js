@@ -22,6 +22,7 @@ async function onSearch(evt) {
   evt.preventDefault();
   valueInput = evt.target.searchQuery.value.trim();
   defValue();
+  refs.btnLoadMore.style.display = 'none';
 
   // console.log(currentPage);
 
@@ -56,6 +57,12 @@ async function onSearch(evt) {
       notifyFoundly(totalHits);
     }
 
+    if (totalHits <= 0) {
+      notifyError();
+      refs.btnLoadMore.style.display = 'none';
+      return;
+    }
+
     if (Math.ceil(totalHits / 40) < 1) {
       console.log(Math.ceil(totalHits / 40));
 
@@ -73,7 +80,7 @@ async function onSearch(evt) {
 
 async function onLoadMore() {
   currentPage += 1;
-  console.log(currentPage);
+  // console.log(currentPage);
   try {
     const { hits, totalHits } = await searchItem(currentPage, valueInput);
 
