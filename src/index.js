@@ -58,7 +58,7 @@ async function onSearch(evt) {
     }
 
     if (totalHits <= 0) {
-      notifyError();
+      // notifyError();
       refs.btnLoadMore.style.display = 'none';
       return;
     }
