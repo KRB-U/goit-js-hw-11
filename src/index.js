@@ -15,25 +15,6 @@ let valueInput = '';
 let count = 40;
 let currentPage = 0;
 
-// async function searchItem(currentPage, valueInput) {
-//   const BASE_URL = `https://pixabay.com/api/?`;
-
-//   const searchPreset = new URLSearchParams({
-//     key: '39112549-9be01c761947c728d2f4fc4eb',
-//     q: valueInput,
-//     image_type: 'photo',
-//     orientation: 'horizontal',
-//     safesearch: 'true',
-//     page: (currentPage += 1),
-//     per_page: 40,
-//   });
-
-//   const resp = await axios.get(`${BASE_URL}${searchPreset}`);
-//   // console.log(resp);
-
-//   return resp.data;
-// }
-
 refs.searchForm.addEventListener('submit', onSearch);
 refs.btnLoadMore.addEventListener('click', onLoadMore);
 
