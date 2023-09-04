@@ -25,6 +25,7 @@ async function onSearch(evt) {
   refs.btnLoadMore.style.display = 'none';
 
   // console.log(currentPage);
+  // console.log(currentPage);
 
   if (!valueInput) {
     warning();
