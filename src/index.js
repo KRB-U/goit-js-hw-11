@@ -63,8 +63,8 @@ async function onSearch(evt) {
       return;
     }
 
-    if (Math.ceil(totalHits / 40) < 1) {
-      console.log(Math.ceil(totalHits / 40));
+    if (currentPage === Math.ceil(totalHits / 40)) {
+      // console.log(Math.ceil(totalHits / 40));
 
       // refs.endSearchResult.style.display = 'block';
       refs.btnLoadMore.style.display = 'none';
