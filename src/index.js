@@ -40,6 +40,9 @@ async function onSearch(evt) {
     //   // console.log('run hits.length');
     //   throw error;
     // }
+    if (totalHits > 0) {
+      notifyFoundly(totalHits);
+    }
 
     if (hits.length > 0) {
       refs.picturesContainer.insertAdjacentHTML(
@@ -53,13 +56,10 @@ async function onSearch(evt) {
 
     refs.picturesContainer.style.display = 'flex';
 
-    if (totalHits > 0) {
-      notifyFoundly(totalHits);
-    }
-
     if (totalHits <= 0) {
       // notifyError();
       refs.btnLoadMore.style.display = 'none';
+
       return;
     }
 
@@ -70,6 +70,7 @@ async function onSearch(evt) {
       refs.btnLoadMore.style.display = 'none';
       return;
     }
+    refs.btnLoadMore.style.display = 'block';
   } catch (err) {
     // console.log(err);
     notifyError();
@@ -105,7 +106,7 @@ async function onLoadMore() {
 function defValue() {
   // refs.picturesContainer.style.display = 'none';
   refs.picturesContainer.innerHTML = '';
-  refs.btnLoadMore.style.display = 'block';
+  // refs.btnLoadMore.style.display = 'block'; // в onSearch на 25 ховаю
   currentPage = 1;
   refs.endSearchResult.style.display = 'none';
 }
