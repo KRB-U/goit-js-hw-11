@@ -40,6 +40,10 @@ async function onSearch(evt) {
       refs.endSearchResult.style.display = 'block';
     }
 
+    if (hits.length === 0) {
+      refs.endSearchResult.style.display = 'none';
+    }
+
     if (hits.length > 0) {
       refs.picturesContainer.insertAdjacentHTML(
         'beforeend',
