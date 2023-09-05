@@ -24,9 +24,6 @@ async function onSearch(evt) {
   defValue();
   refs.btnLoadMore.style.display = 'none';
 
-  // console.log(currentPage);
-  // console.log(currentPage);
-
   if (!valueInput) {
     warning();
     return;
@@ -34,13 +31,7 @@ async function onSearch(evt) {
 
   try {
     const { hits, totalHits } = await searchItem(currentPage, valueInput);
-    // console.log(hits);
-    // console.log(totalHits);
 
-    // if (hits.length === 0) {
-    //   // console.log('run hits.length');
-    //   throw error;
-    // }
     if (totalHits > 0) {
       notifyFoundly(totalHits);
     }
@@ -52,28 +43,23 @@ async function onSearch(evt) {
       );
     } else {
       notifyError();
-      refs.endSearchResult.style.display = 'none';
+      // refs.endSearchResult.style.display = 'none';
     }
 
     refs.picturesContainer.style.display = 'flex';
 
     if (totalHits <= 0) {
-      // notifyError();
       refs.btnLoadMore.style.display = 'none';
-
       return;
     }
 
     if (currentPage === Math.ceil(totalHits / 40)) {
-      // console.log(Math.ceil(totalHits / 40));
-
       // refs.endSearchResult.style.display = 'block';
       refs.btnLoadMore.style.display = 'none';
       return;
     }
     refs.btnLoadMore.style.display = 'block';
   } catch (err) {
-    // console.log(err);
     notifyError();
   }
 
@@ -82,7 +68,6 @@ async function onSearch(evt) {
 
 async function onLoadMore() {
   currentPage += 1;
-  // console.log(currentPage);
   try {
     const { hits, totalHits } = await searchItem(currentPage, valueInput);
 
@@ -90,9 +75,7 @@ async function onLoadMore() {
       'beforeend',
       createPhotoCard(hits)
     );
-    // console.log(currentPage);
     console.log(Math.ceil(totalHits / 40));
-    // console.log(totalHits);
 
     if (currentPage === Math.ceil(totalHits / 40)) {
       refs.endSearchResult.style.display = 'block';
@@ -105,9 +88,7 @@ async function onLoadMore() {
 }
 
 function defValue() {
-  // refs.picturesContainer.style.display = 'none';
   refs.picturesContainer.innerHTML = '';
-  // refs.btnLoadMore.style.display = 'block'; // в onSearch на 25 ховаю
   currentPage = 1;
   refs.endSearchResult.style.display = 'none';
 }
