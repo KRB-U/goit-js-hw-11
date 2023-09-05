@@ -36,6 +36,10 @@ async function onSearch(evt) {
       notifyFoundly(totalHits);
     }
 
+    if (hits.length < 40) {
+      refs.endSearchResult.style.display = 'block';
+    }
+
     if (hits.length > 0) {
       refs.picturesContainer.insertAdjacentHTML(
         'beforeend',
