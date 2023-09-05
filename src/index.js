@@ -38,8 +38,9 @@ async function onSearch(evt) {
 
     if (hits.length < 40) {
       refs.endSearchResult.style.display = 'block';
+    } else {
+      refs.endSearchResult.style.display = 'none';
     }
-
     if (hits.length === 0) {
       refs.endSearchResult.style.display = 'none';
     }
